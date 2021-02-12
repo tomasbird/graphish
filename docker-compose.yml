@@ -14,7 +14,7 @@ services:
     build:
       context: ./nlp
       dockerfile: Dockerfile
-    image: nghiadh/nlp:0.2.0
+    image: dfompo/nlp:0.2.0
     hostname: nlp
     container_name: nlp
     networks:
@@ -43,7 +43,7 @@ services:
     build:
       context: ./extractor
       dockerfile: Dockerfile
-    image: nghiadh/extractor:0.1.0
+    image: dfompo/extractor:0.1.0
     hostname: extractor
     container_name: extractor
     networks:
@@ -97,7 +97,7 @@ services:
     build:
       context: ./show
       dockerfile: Dockerfile
-    image: nghiadh/show:0.2.0
+    image: dfompo/show:0.2.0
     hostname: show
     container_name: show
     ports:
