@@ -32,5 +32,4 @@ stages:
         containerRegistry: 'OK-dockerhub-SC'
         repository: 'dfo-mpo/graphish-show'
         command: 'buildAndPush'
-        Dockerfile: '$(Build.SourcesDirectory)/show/Dockerfile''
-
+        Dockerfile: '$(Build.SourcesDirectory)/show/Dockerfile'
