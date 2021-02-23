@@ -13,7 +13,7 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: Build and push an image to docker hub
   jobs:
   - job: Build
     displayName: Build
@@ -21,15 +21,16 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Docker build an image
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/show/Dockerfile'
         tags: |
           $(tag)
     - task: Docker@2
+      displayName: Docker build and push image to dockerhub
       inputs:
         containerRegistry: 'OK-dockerhub-SC'
-        repository: 'dfo-mpo/graphish-show'
+        repository: 'dfompo/graphish-show'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/show/Dockerfile'
