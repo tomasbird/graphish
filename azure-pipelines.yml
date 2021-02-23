@@ -20,17 +20,30 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
+#    - task: Docker@2
+#      displayName: Docker build an image
+#      inputs:
+#        command: build
+#        dockerfile: '$(Build.SourcesDirectory)/show/Dockerfile'
+#        tags: |
+#          $(tag)
     - task: Docker@2
-      displayName: Docker build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/show/Dockerfile'
-        tags: |
-          $(tag)
-    - task: Docker@2
-      displayName: Docker build and push image to dockerhub
+      displayName: Build and push show image to dockerhub
       inputs:
         containerRegistry: 'OK-dockerhub-SC'
         repository: 'dfompo/graphish-show'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/show/Dockerfile'
+        tags: |
+          $(tag)
+
+    - task: Docker@2
+      displayName: Build and push nlp image to dockerhub
+      inputs:
+        containerRegistry: 'OK-dockerhub-SC'
+        repository: 'dfompo/graphish-nlp'
+        command: 'buildAndPush'
+        Dockerfile: '$(Build.SourcesDirectory)/nlp/Dockerfile'
+        tags: |
+          $(tag)
+ 
